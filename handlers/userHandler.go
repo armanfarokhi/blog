@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/armanfarokhi/log/database"
-	"github.com/armanfarokhi/log/models"
-	"github.com/armanfarokhi/log/utils"
+	"github.com/armanfarokhi/blog/database"
+	"github.com/armanfarokhi/blog/models"
+	"github.com/armanfarokhi/blog/utils"
 	"github.com/gin-gonic/gin"
 )
 
