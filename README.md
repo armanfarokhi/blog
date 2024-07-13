@@ -22,12 +22,11 @@ This is a simple blog application built with Golang, Gin, GORM, and MySQL. The a
 
     ```env
     DB_DIALECT=mysql
-    DB_HOST=localhost
-    DB_PORT=3306
+    DB_HOST=your_db_host
+    DB_PORT=your_db_port
     DB_USER=your_db_user
     DB_PASSWORD=your_db_password
     DB_NAME=your_db_name
-    JWT_SECRET=your_jwt_secret
     ```
 
 3. Install dependencies:
