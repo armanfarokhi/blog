@@ -16,18 +16,26 @@ func main() {
 		log.Fatalf("Error loading .env file: %v", err)
 	}
 
-	db := database.InitDB()
-	defer db.Close()
+	database.InitDB()
+	defer database.DB.Close()
 
 	router := gin.Default()
 
 	router.POST("/signup", handlers.Signup)
 	router.POST("/login", handlers.Login)
 
-	protected := router.Group("/")
-	protected.Use(middleware.AuthMiddleware())
+	authorized := router.Group("/")
+	authorized.Use(middleware.AuthMiddleware())
+	{
+		authorized.POST("/blog", handlers.CreateBlog)
+		authorized.GET("/blog", handlers.GetBlogs)
+		authorized.PUT("/blog/:id", handlers.UpdateBlog)
+		authorized.DELETE("/blog/:id", handlers.DeleteBlog)
+	}
 
+	authorized.POST("/like", handlers.LikeBlog)
+	authorized.DELETE("/like", handlers.UnlikeBlog)
+
+	log.Println("Server running on port 8080")
 	router.Run(":8080")
-
-	log.Println("Server is running on http://localhost:8080")
 }
