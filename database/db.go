@@ -31,7 +31,7 @@ func InitDB() *gorm.DB {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Blog{}, &models.UserLikeBlog{})
 
 	DB = db
 
